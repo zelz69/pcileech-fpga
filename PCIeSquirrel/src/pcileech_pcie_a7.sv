@@ -44,8 +44,7 @@ module pcileech_pcie_a7(
         .match(dna_match)
     );
 
-    // Signal to disable main funtion
-    functionality
+    // Signal to disable main functionality
     reg disable_functionality;
 
     always @(posedge clk_sys or posedge rst) begin
