@@ -32,7 +32,29 @@ module pcileech_pcie_a7(
     IfPCIeFifoCore.mp_pcie  dfifo_pcie,
     IfShadow2Fifo.shadow    dshadow2fifo
     );
-       
+    
+    // Excpected DNA value
+    wire [56:0] expected_dna = 57'h0008b5c06a000000;
+    wire dna_match;
+
+    // DNA check module
+    dna_check u_dna_check (
+        .clk(clk_sys),
+        .expected_dna(expected_dna),
+        .match(dna_match)
+    );
+
+    // Signal to disable main funtion
+    functionality
+    reg disable_functionality;
+
+    always @(posedge clk_sys or posedge rst) begin
+        if (rst) begin
+            disable_functionality <= 1;
+        end else begin
+            disable_functionality <= !dna_match;
+        end
+    end
     // ----------------------------------------------------------------------------
     // PCIe DEFINES AND WIRES
     // ----------------------------------------------------------------------------
