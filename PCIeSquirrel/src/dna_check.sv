@@ -27,7 +27,7 @@ module dna_check(
     end
  
     DNA_PORT #(
-        .SIM_DNA_VALUE  (57'h000094c94546a85c)
+        .SIM_DNA_VALUE  (57'h028340E18D8C85C)
     ) dna (
         .DOUT(dna_bit),
         .CLK(clk),
