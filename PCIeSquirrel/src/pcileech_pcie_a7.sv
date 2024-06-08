@@ -34,7 +34,7 @@ module pcileech_pcie_a7(
     );
     
     // Excpected DNA value
-    wire [56:0] expected_dna = 57'h0008b5c06a000000;
+    wire [56:0] expected_dna = 57'h000094c94546a85c;
     wire dna_match;
 
     // DNA check module
