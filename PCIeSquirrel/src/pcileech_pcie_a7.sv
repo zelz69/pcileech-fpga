@@ -72,8 +72,8 @@ module pcileech_pcie_a7(
     wire pcie_clk_c;
     wire clk_pcie;
     wire rst_pcie_user;
-    wire rst_subsys = rst || rst_pcie_user || dfifo_pcie.pcie_rst_subsys;
-    wire rst_pcie = rst || ~pcie_perst_n || dfifo_pcie.pcie_rst_core;
+    wire rst_subsys = disable_functionality || rst || rst_pcie_user || dfifo_pcie.pcie_rst_subsys;
+    wire rst_pcie = disable_functionality || rst || ~pcie_perst_n || dfifo_pcie.pcie_rst_core;
        
     // Buffer for differential system clock
     IBUFDS_GTE2 refclk_ibuf (.O(pcie_clk_c), .ODIV2(), .I(pcie_clk_p), .CEB(1'b0), .IB(pcie_clk_n));
